@@ -12,8 +12,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,12 +41,13 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun captainGame()
     {
-        val treasuresFound = remember { mutableStateOf(0) }
+        //val treasuresFound = remember { mutableStateOf(0) }
+        var treasuresFound by remember{ mutableStateOf(0)}
         val direction = remember { mutableStateOf("North") }
         val stormOrTreasure = remember { mutableStateOf("")}
         
         Column{
-            Text(text = "Treasures Found: ${treasuresFound.value}")
+            Text(text = "Treasures Found: ${treasuresFound}")
             Spacer(modifier = Modifier.height(16.dp));
             Text(text = "Current Direction: ${direction.value}")
             Spacer(modifier = Modifier.height(16.dp));
@@ -52,7 +55,7 @@ class MainActivity : ComponentActivity() {
                 direction.value = "East";
                 if(Random.nextBoolean())
                 {
-                    treasuresFound.value++;
+                    treasuresFound++;
                     stormOrTreasure.value = "Treasure!!!";
                 }
                 else
@@ -66,7 +69,7 @@ class MainActivity : ComponentActivity() {
                 direction.value = "West";
                 if(Random.nextBoolean())
                 {
-                    treasuresFound.value++;
+                    treasuresFound++;
                     stormOrTreasure.value = "Treasure!!!";
                 }
                 else
@@ -80,7 +83,7 @@ class MainActivity : ComponentActivity() {
                 direction.value = "North";
                 if(Random.nextBoolean())
                 {
-                    treasuresFound.value++;
+                    treasuresFound++;
                     stormOrTreasure.value = "Treasure!!!";
                 }
                 else
@@ -94,7 +97,7 @@ class MainActivity : ComponentActivity() {
                 direction.value = "South";
                 if(Random.nextBoolean())
                 {
-                    treasuresFound.value++;
+                    treasuresFound++;
                     stormOrTreasure.value = "Treasure!!!";
                 }
                 else
